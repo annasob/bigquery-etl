@@ -80,7 +80,7 @@ class TaskRef:
     @schedule_interval.validator
     def validate_schedule_interval(self, attribute, value):
         """Validate the schedule_interval format."""
-        if value is not None and not is_schedule_interval(value):
+        if not is_schedule_interval(value):
             raise ValueError(f"Invalid schedule_interval {value}.")
 
     def get_execution_delta(self, schedule_interval):
