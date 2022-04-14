@@ -6,6 +6,6 @@ BEGIN
     FROM
         `dev-fivetran.acoustic_sftp.raw_recipient_export`;
 
-    TRUNCATE TABLE IF EXISTS `dev-fivetran.acoustic_sftp.raw_recipient_export`;
+    TRUNCATE TABLE `dev-fivetran.acoustic_sftp.raw_recipient_export`;
 
 END;
