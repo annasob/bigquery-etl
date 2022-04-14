@@ -1,0 +1,455 @@
+fields:
+
+#### Fields specified in the Acoustic Data Schemas doc for Contacts:
+# https://docs.google.com/spreadsheets/d/1oLd2wOJE7XIZTFC5WJB3mr1FtXTZvkhhDShCN-XwrdA/edit#gid=0
+
+- mode: NULLABLE
+  name: email
+  type: STRING
+  description: email address
+
+- mode: NULLABLE
+  name: basket_token
+  type: STRING
+  description: token generated for unsubscribe and email\
+   preference center links; this was called token__c in SFMC
+
+- mode: NULLABLE
+  name: sfdc_id
+  type: STRING
+  description: key to connect to rt_mofo_campaign_member\
+   and rt_mofo_opportunity relational databases
+
+- mode: NULLABLE
+  name: double_opt_in
+  type: INTEGER
+  description: TRUE = double opted-in FALSE = not opted-in.
+
+- mode: NULLABLE
+  name: has_opted_out_of_email
+  type: INTEGER
+  description: TRUE = has opted-out (exclude them from email sends)\
+   FALSE = can send emails
+
+- mode: NULLABLE
+  name: email_format
+  type: STRING
+  description: preferred email format - values are H for HTML or T for\
+   Text and sometimes this field is blank for a contact
+
+- mode: NULLABLE
+  name: email_lang
+  type: STRING
+  description: preferred email language
+
+- mode: NULLABLE
+  name: fxa_created_date
+  type: STRING
+  description: records the date/time a subscriber created a Firefox account
+
+- mode: NULLABLE
+  name: fxa_first_service
+  type: STRING
+  description: the first service added to the Firefox account
+
+- mode: NULLABLE
+  name: fxa_id
+  type: STRING
+  description: key to connect to rt_moco_fxa_service relational database
+
+- mode: NULLABLE
+  name: fxa_account_deleted
+  type: INTEGER
+  description: has the fxa account been deleted?
+
+- mode: NULLABLE
+  name: email_id
+  type: STRING
+  description: key to connect to rt_newsletters\
+   and rt_mofo_contact relational databases
+
+- mode: NULLABLE
+  name: mailing_country
+  type: STRING
+  description: subscriber's country
+
+- mode: NULLABLE
+  name: cohort
+  type: STRING
+  description: stores values for automation testing
+
+- mode: NULLABLE
+  name: sub_mozilla_foundation
+  type: INTEGER
+  description: subscribed to Mozilla Foundation
+
+- mode: NULLABLE
+  name: sub_common_voice
+  type: INTEGER
+  description: subscribed to Mozilla Common Voice
+
+- mode: NULLABLE
+  name: sub_hubs
+  type: INTEGER
+  description: subscribed to Mozilla Hubs
+
+- mode: NULLABLE
+  name: sub_mixed_reality
+  type: INTEGER
+  description: subscribed to Mixed Reality
+
+- mode: NULLABLE
+  name: sub_internet_health_report
+  type: INTEGER
+  description: subscribed to Insights
+
+- mode: NULLABLE
+  name: sub_miti
+  type: INTEGER
+  description: null
+
+- mode: NULLABLE
+  name: sub_mozilla_fellowship_awardee_alumni
+  type: INTEGER
+  description: subscribed to Fellowship and Awardee Alumni
+
+- mode: NULLABLE
+  name: sub_mozilla_festival
+  type: INTEGER
+  description: subscribed to MozFest
+
+- mode: NULLABLE
+  name: sub_mozilla_technology
+  type: INTEGER
+  description: subscribed to Mozilla Technology
+
+- mode: NULLABLE
+  name: sub_mozillians_nda
+  type: INTEGER
+  description: NDA'd Mozillians
+
+- mode: NULLABLE
+  name: sub_firefox_accounts_journey
+  type: INTEGER
+  description: subscribed to Firefox Account Tips
+
+- mode: NULLABLE
+  name: sub_knowledge_is_power
+  type: INTEGER
+  description: subscribed to Knowledge is Power
+
+- mode: NULLABLE
+  name: sub_take_action_for_the_internet
+  type: INTEGER
+  description: subscribed to Take Action for the Internet
+
+- mode: NULLABLE
+  name: sub_test_pilot
+  type: INTEGER
+  description: subscribed to New Product Testing
+
+- mode: NULLABLE
+  name: sub_firefox_news
+  type: INTEGER
+  description: subscribed to Firefox News
+
+- mode: NULLABLE
+  name: vpn_waitlist_geo
+  type: STRING
+  description: VPN waitlist country location
+
+- mode: NULLABLE
+  name: vpn_waitlist_platform
+  type: STRING
+  description: VPN waitlist platform name
+
+- mode: NULLABLE
+  name: sub_about_mozilla
+  type: INTEGER
+  description: subscribed to Mozilla Community
+
+- mode: NULLABLE
+  name: sub_apps_and_hacks
+  type: INTEGER
+  description: subscribed to Developer newsletter
+
+- mode: NULLABLE
+  name: sub_rally
+  type: INTEGER
+  description: subscribed to Mozilla Rally
+
+- mode: NULLABLE
+  name: sub_firefox_sweepstakes
+  type: INTEGER
+  description: subscribed to Firefox Sweepstakes
+
+- mode: NULLABLE  # seems missing
+  name: relay_waitlist_geo
+  type: STRING
+  description: Relay waitlist country location
+
+
+#### Fields not included in the data schema doc, but part of the export
+
+- mode: NULLABLE
+  name: create_timestamp
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: email_type
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: fxa_lang
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: moco_mozillians_segment
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: mofo_segment
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: open_date
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: opt_in_date
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: opt_in_details
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: opted_out
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: sent_date
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: amo_email_opt_in
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: clicked_date
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: sumo_contributor
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: amo_user
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: sumo_user
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_confirm_hubs
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_welcome_miti
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_welcome_mozilla_foundation
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_confirm_firefox_news
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_confirm_miti
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_confirm_mozilla_festival
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_welcome_mozilla_fellowship_awardee_alumni
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_welcome_mozilla_festival
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_confirm_mozilla_technology
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_welcome_knowledge_is_power
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_welcome_firefox_news
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_welcome_test_pilot
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_confirm_mozilla_fellowship_awardee_alumni
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_confirm_mozilla_foundation
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_confirm_test_pilot
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_welcome_common_voice
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_welcome_take_action_for_the_internet
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: unsubscribe_reason
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: amo_last_login
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: amo_add_on_ids
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: amo_username
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: last_name
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: fxa_primary_email
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: amo_language
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: amo_location
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: opted_out_date
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_welcome_about_mozilla
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: amo_user_id
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: fxa_login_date
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_welcome_apps_and_hacks
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: amo_profile_url
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: amo_display_name
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: first_name
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: opt_out_details
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: zzz_welcome_firefox_sweepstakes
+  type: STRING
+  description: null
+
+- mode: NULLABLE
+  name: sumo_username
+  type: STRING
+  description: null
+
+
+###### ETL fields
+
+- mode: NULLABLE
+  name: submission_date
+  type: DATE
+  description: Airflow's execution date
