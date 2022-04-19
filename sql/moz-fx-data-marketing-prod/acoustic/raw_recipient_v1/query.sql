@@ -13,7 +13,7 @@ BEGIN
         COALESCE(url, "unknown") AS url,  -- 9075718 nulls // string
         LOWER(COALESCE(suppression_reason, "unknown")) AS suppression_reason,  -- 8456720 nulls // string
         @submission_date AS job_date, -- // date
-        CURRENT_DATETIME() AS loaded_at, -- // datetime
+        CURRENT_DATETIME() AS processed_at, -- // datetime
 
     FROM
         `dev-fivetran.acoustic_sftp.raw_recipient_export`;

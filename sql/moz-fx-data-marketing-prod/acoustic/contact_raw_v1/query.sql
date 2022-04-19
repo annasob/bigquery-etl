@@ -1,11 +1,24 @@
+CREATE TEMP FUNCTION FORMAT_FXA_DATE(date_string STRING)
+  RETURNS DATE
+  AS (
+      CASE
+      WHEN REGEXP_CONTAINS(date_string, r"^(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.\d{1,3}Z)$")
+        THEN DATE(DATETIME(SPLIT(date_string, ".")[OFFSET(0)]))
+      WHEN REGEXP_CONTAINS(date_string, r"^(\d{2}/\d{2}/\d{4})$")
+        THEN PARSE_DATE("%m/%d/%Y", date_string)
+      ELSE
+        DATE(date_string)
+      END
+  );
+
 BEGIN
 
     SELECT
         -- LOWER(email),  -- do we actually need email? Looks like we could use email_id as a unique identifier? -- not null // string
         email_id,  -- not null // string
-        COALESCE(basket_token, "unknown") AS basket_token,  -- 8729 so far with null values | is this a problem?  // string
-        COALESCE(sfdc_id, "unknown") AS sfdc_id,  -- 1142993 so far with null values | is this a problem?  // string
-        COALESCE(fxa_id, "unknown") AS fxa_id,  -- 121606 nulls || this is bad?
+        basket_token,  -- 8729 so far with null values | is this a problem?  // string
+        sfdc_id,  -- 1142993 so far with null values | is this a problem?  // string
+        fxa_id,  -- 121606 nulls || this is bad?
 
         CAST(COALESCE(double_opt_in, 0) AS BOOLEAN) AS double_opt_in,  -- no nulls, true or false value  // boolean
         CAST(COALESCE(has_opted_out_of_email, 0) AS BOOLEAN) AS has_opted_out_of_email,  -- int, no nulls, true or false value  // boolean
@@ -15,7 +28,7 @@ BEGIN
         LOWER(COALESCE(mailing_country, "unknown")) AS mailing_country,  -- no nulls  // string
         LOWER(COALESCE(cohort, "unknown")) AS cohort,  -- 1320918 nulls
 
-        fxa_created_date AS fxa_created_date,  -- 107057 nulls  -- need to parse the date
+        FORMAT_FXA_DATE(fxa_created_date) AS fxa_created_date,  -- 107057 nulls  -- need to parse the date
         LOWER(COALESCE(fxa_first_service, "unknown")) AS fxa_first_service,  -- no nulls  // string
         CAST(COALESCE(fxa_account_deleted, 0) AS BOOLEAN) AS fxa_account_deleted,  -- 77207 nulls // boolean but contains nulls | how should they be treated?
 
@@ -46,12 +59,12 @@ BEGIN
         -- relay_waitlist_geo,  -- # missing field, need to verify, maybe it's related to reusing old connector
         -- recipient_id,  -- 1326878 nulls, a field coming from Acoustic, shoudl this field be excluded?
         last_modified_date,  -- 1326878 nulls, acoustic field
-        @submission_date AS job_date,  -- // datetime
+        @submission_date AS job_date,  -- // date
         CURRENT_DATETIME() AS processed_at, --  //  datetime
 
     FROM
-        `dev-fivetran.acoustic_sftp.raw_recipient_export`;
+        `dev-fivetran.acoustic_sftp.contact_export`;
 
-    TRUNCATE TABLE `dev-fivetran.acoustic_sftp.raw_recipient_export`;
+    TRUNCATE TABLE `dev-fivetran.acoustic_sftp.contact_export`;
 
 END;

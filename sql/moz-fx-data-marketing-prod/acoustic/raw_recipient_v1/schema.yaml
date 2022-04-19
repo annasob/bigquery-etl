@@ -67,6 +67,6 @@ fields:
   description: Airflow's execution date
 
 - mode: NULLABLE
-  name: submission_date
+  name: processed_at
   type: DATETIME
   description: Datetime when this field was processed by BQETL

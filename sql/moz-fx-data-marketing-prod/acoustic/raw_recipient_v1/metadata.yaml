@@ -18,7 +18,7 @@ owners:
 
 scheduling:
   dag_name: bqetl_acoustic_raw_recipient_export
-  arguments: ["--date", "{{ ds }}"]
+  arguments: ["--submission_date", "{{ ds }}"]
   # referenced_tables:
   #   - ['moz-fx-data-marketing-prod', 'iprospect', 'adspend_raw_v1']
 
@@ -27,3 +27,8 @@ bigquery:
     field: submission_date
     type: day
     require_partition_filter: false
+  clustering:
+    fields:
+      - event_type
+      - recipient_type
+      - body_type
