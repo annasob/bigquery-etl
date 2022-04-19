@@ -16,8 +16,8 @@ BEGIN
         CURRENT_DATETIME() AS processed_at, -- // datetime
 
     FROM
-        `dev-fivetran.acoustic_sftp.raw_recipient_export`;
+        `dev-fivetran.acoustic_sftp.raw_recipient_export`;  -- TODO: update dataaset to prod dataset
 
-    TRUNCATE TABLE `dev-fivetran.acoustic_sftp.raw_recipient_export`;
+    TRUNCATE TABLE `dev-fivetran.acoustic_sftp.raw_recipient_export`;  -- TODO: update dataaset to prod dataset
 
 END;

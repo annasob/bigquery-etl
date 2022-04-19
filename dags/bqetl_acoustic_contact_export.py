@@ -37,11 +37,7 @@ default_args = {
 tags = ["impact/tier_3", "repo/bigquery-etl"]
 
 with DAG(
-    "bqetl_acoustic_contact_export",
-    default_args=default_args,
-    schedule_interval="manual",
-    doc_md=docs,
-    tags=tags,
+    "bqetl_acoustic_contact_export", default_args=default_args, doc_md=docs, tags=tags
 ) as dag:
 
     acoustic__contact_raw__v1 = bigquery_etl_query(
@@ -53,6 +49,6 @@ with DAG(
         email=["kignasiak@mozilla.com", "telemetry-alerts@mozilla.com"],
         date_partition_parameter="submission_date",
         depends_on_past=False,
-        arguments=["--date", "{{ ds }}"],
+        arguments=["--submission_date", "{{ ds }}"],
         dag=dag,
     )

@@ -63,8 +63,8 @@ BEGIN
         CURRENT_DATETIME() AS processed_at, --  //  datetime
 
     FROM
-        `dev-fivetran.acoustic_sftp.contact_export`;
+        `dev-fivetran.acoustic_sftp.contact_export`;  -- TODO: update dataaset to prod dataset
 
-    TRUNCATE TABLE `dev-fivetran.acoustic_sftp.contact_export`;
+    TRUNCATE TABLE `dev-fivetran.acoustic_sftp.contact_export`;  -- TODO: update dataaset to prod dataset
 
 END;
