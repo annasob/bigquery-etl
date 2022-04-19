@@ -4,9 +4,9 @@ fields:
 # https://developer.goacoustic.com/acoustic-campaign/reference/rawrecipientdataexport
 
 - mode: NULLABLE
-  name: mailing_id
-  type: INTEGER
-  description: The ID of the Sent email associated with the event.
+  name: email
+  type: STRING
+  description: The contact’s email address.
 
 - mode: NULLABLE
   name: recipient_id
@@ -14,24 +14,29 @@ fields:
   description: The ID of the contact associated with the event.
 
 - mode: NULLABLE
-  name: recipient_type
-  type: STRING
-  description: The type of contact to whom the Acoustic Campaign sent the email.
-
-- mode: NULLABLE
   name: report_id
   type: INTEGER
   description: null
 
 - mode: NULLABLE
+  name: mailing_id
+  type: INTEGER
+  description: The ID of the Sent email associated with the event.
+
+- mode: NULLABLE
   name: event_timestamp
-  type: STRING
+  type: DATETIME
   description: The date and time of the event in the API user’s time zone.
 
 - mode: NULLABLE
   name: event_type
   type: STRING
   description: The type of contact event.
+
+- mode: NULLABLE
+  name: recipient_type
+  type: STRING
+  description: The type of contact to whom the Acoustic Campaign sent the email.
 
 - mode: NULLABLE
   name: body_type
@@ -42,11 +47,6 @@ fields:
   name: click_name
   type: STRING
   description: The user-specified name of the link or Clickstream.
-
-- mode: NULLABLE
-  name: email
-  type: STRING
-  description: The contact’s email address.
 
 - mode: NULLABLE
   name: url
@@ -65,3 +65,8 @@ fields:
   name: submission_date
   type: DATE
   description: Airflow's execution date
+
+- mode: NULLABLE
+  name: submission_date
+  type: DATETIME
+  description: Datetime when this field was processed by BQETL
